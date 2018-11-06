@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Levels">
+
+
+
+    <Button
+        android:id="@+id/lvl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 1 0-10"
+        />
+    <Button
+        android:id="@+id/lvl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 2 0-20"
+        android:layout_below="@+id/lvl1"
+        />
+    <Button
+        android:id="@+id/lvl3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 3 0-50"
+        android:layout_below="@+id/lvl2"
+        />
+    <Button
+        android:id="@+id/lvl4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 4 0-100"
+        android:layout_below="@+id/lvl3"
+    />
+    <Button
+        android:id="@+id/lvl5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 5 0-500"
+        android:layout_below="@+id/lvl4"
+        />
+    <Button
+        android:id="@+id/lvl6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 6 0-1000"
+        android:layout_below="@+id/lvl5"
+        />
+    <Button
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="back"
+        android:layout_below="@+id/lvl6"
+        />
+
+</RelativeLayout>

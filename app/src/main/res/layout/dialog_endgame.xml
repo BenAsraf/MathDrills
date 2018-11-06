@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity"
+    android:background="@color/gray">
+
+
+    <TextView
+        android:id="@+id/msg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="congratulations"
+        android:textSize="35sp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/msg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/msg1"
+        android:textSize="20sp"
+        android:text=" You answerd correctly on"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/correctanswers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/msg2"
+        android:layout_below="@id/msg1"
+        android:text=" drills "
+        android:textSize="20sp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/msg1"
+        android:layout_toEndOf="@id/correctanswers"
+        android:textSize="20sp"
+        android:text="drills"
+        android:id="@+id/msg3"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/msg4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Enter your name"
+        android:layout_below="@id/msg2"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:inputType="text"
+        android:layout_below="@id/msg4"
+        android:layout_margin="10dp" />
+
+
+</RelativeLayout>

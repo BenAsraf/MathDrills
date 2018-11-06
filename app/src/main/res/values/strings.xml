@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MathDrills</string>
+
+    <string-array name="signsarray">
+        <item>+</item>
+        <item>-</item>
+        <item>x</item>
+        <item>/</item>
+    </string-array>
+</resources>
