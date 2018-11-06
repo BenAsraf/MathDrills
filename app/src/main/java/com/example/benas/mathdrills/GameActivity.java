@@ -190,7 +190,6 @@ public class GameActivity extends Activity {
                             ContentValues contentValues = new ContentValues();
                             contentValues.put("name",name);
                             contentValues.put("score",numcorrectanswer);
-                            scoreboard.database.insert("score_board",null,contentValues);
 
                             Intent intent = new Intent(GameActivity.this,MainActivity.class);
                             startActivity(intent);
