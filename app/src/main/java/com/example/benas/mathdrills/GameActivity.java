@@ -288,6 +288,7 @@ public class GameActivity extends Activity {
         }
         num1 = rand.nextInt(bound);
         if (sign.equals("Division")){
+
             do {
                 num2  = rand.nextInt(bound);
 
