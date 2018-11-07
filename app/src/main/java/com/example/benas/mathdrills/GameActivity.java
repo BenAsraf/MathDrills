@@ -287,12 +287,10 @@ public class GameActivity extends Activity {
                 break;
         }
         num1 = rand.nextInt(bound);
-        int i = 0;
         if (sign.equals("Division")){
-
             do {
                 num2  = rand.nextInt(bound);
-//                i++;
+
             }while( ( num1 <= num2  || num1 % num2 != 0 || num2 == 0) );
 
 
