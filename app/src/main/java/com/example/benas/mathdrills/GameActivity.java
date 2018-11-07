@@ -295,9 +295,7 @@ public class GameActivity extends Activity {
 //                i++;
             }while( ( num1 <= num2  || num1 % num2 != 0 || num2 == 0) );
 
-//            if (num1 % num2 != 0 || num1 > num2 ){
-//                num2 = num1;
-//            }
+
         }
         firstnum.setText(""+num1);
         secondnum.setText(""+num2);
