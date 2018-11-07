@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
     Button play;
     Button exit;
     Button scoreboardBT;
-
+    String mode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,9 @@ public class MainActivity extends Activity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mode ="play";
                 Intent intent = new Intent(MainActivity.this, SignPick.class);
+                intent.putExtra("mode",mode);
                 startActivity(intent);
             }
         });
@@ -42,7 +44,9 @@ public class MainActivity extends Activity {
         scoreboardBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScoreBoard.class);
+                mode = "scoreboard";
+                Intent intent = new Intent(MainActivity.this, SignPick.class);
+                intent.putExtra("mode",mode);
                 startActivity(intent);
 
             }

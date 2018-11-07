@@ -18,7 +18,7 @@ public class SignPick extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_pick);
-
+        final String mode = getIntent().getStringExtra("mode");
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
         multiply = findViewById(R.id.multiply);
@@ -32,6 +32,7 @@ public class SignPick extends Activity {
                 String plussign = plus.getText().toString();
                 Intent intent = new Intent(SignPick.this,Levels.class);
                 intent.putExtra("sign",plussign);
+                intent.putExtra("mode",mode);
                 startActivity(intent);
             }
         });
@@ -41,6 +42,7 @@ public class SignPick extends Activity {
                 String minussign = minus.getText().toString();
                 Intent intent = new Intent(SignPick.this,Levels.class);
                 intent.putExtra("sign",minussign);
+                intent.putExtra("mode",mode);
                 startActivity(intent);
             }
         });
@@ -50,6 +52,7 @@ public class SignPick extends Activity {
                 String multiplysign = multiply.getText().toString();
                 Intent intent = new Intent(SignPick.this,Levels.class);
                 intent.putExtra("sign",multiplysign);
+                intent.putExtra("mode",mode);
                 startActivity(intent);
             }
         });
@@ -59,6 +62,7 @@ public class SignPick extends Activity {
                 String divisionsign = division.getText().toString();
                 Intent intent = new Intent(SignPick.this,Levels.class);
                 intent.putExtra("sign",divisionsign);
+                intent.putExtra("mode",mode);
                 startActivity(intent);
             }
         });
@@ -68,6 +72,7 @@ public class SignPick extends Activity {
                 String randomsign = random.getText().toString();
                 Intent intent = new Intent(SignPick.this,Levels.class);
                 intent.putExtra("sign",randomsign);
+                intent.putExtra("mode",mode);
                 startActivity(intent);
             }
         });

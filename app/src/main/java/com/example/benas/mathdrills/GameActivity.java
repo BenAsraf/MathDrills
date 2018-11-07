@@ -46,13 +46,15 @@ public class GameActivity extends Activity {
     TextView timer;
     TextView correctanswer;
     String level;
+    String sign;
     int numcorrectanswer=0;
-    ScoreBoard scoreboard = new ScoreBoard();
+    DatabaseHelper database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        final String sign = getIntent().getStringExtra("sign");
+        database = new DatabaseHelper(GameActivity.this);
+        sign = getIntent().getStringExtra("sign");
         level = getIntent().getStringExtra("level");
         btnZero = findViewById(R.id.btn_0);
         btnOne = findViewById(R.id.btn_1);
@@ -102,7 +104,7 @@ public class GameActivity extends Activity {
         }
         randnumbers();
 
-        numberbtnslistner numberbtnslistner = new numberbtnslistner();
+        final numberbtnslistner numberbtnslistner = new numberbtnslistner();
         btnZero.setOnClickListener(numberbtnslistner);
         btnOne.setOnClickListener(numberbtnslistner);
         btnTwo.setOnClickListener(numberbtnslistner);
@@ -152,7 +154,7 @@ public class GameActivity extends Activity {
             }
         });
 
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer.setText(""+millisUntilFinished / 1000);
@@ -187,10 +189,7 @@ public class GameActivity extends Activity {
                             String name = "user1";
                             if(!username.getText().toString().equals(""))
                                 name = username.getText().toString();
-                            ContentValues contentValues = new ContentValues();
-                            contentValues.put("name",name);
-                            contentValues.put("score",numcorrectanswer);
-
+                            database.add(name,Integer.toString(numcorrectanswer),sign,level);
                             Intent intent = new Intent(GameActivity.this,MainActivity.class);
                             startActivity(intent);
                         }
@@ -250,7 +249,7 @@ public class GameActivity extends Activity {
                 }
                 break;
             case "/":
-                if (num1 + num2 == Integer.parseInt(answer.getText().toString())) {
+                if (num1 / num2 == Integer.parseInt(answer.getText().toString())) {
                     correct.setVisibility(View.VISIBLE);
                     wrong.setVisibility(View.GONE);
                     numcorrectanswer++;
@@ -264,36 +263,44 @@ public class GameActivity extends Activity {
     }
     public void randnumbers (){
         Random rand = new Random();
+        int bound = 0;
         switch (level) {
-            case "Level 1 0-10":
-                num1 = rand.nextInt(10);
-                num2 = rand.nextInt(10);
+            case "1":
+               bound = 10;
                 break;
-            case "Level 2 0-20":
-                num1 = rand.nextInt(20);
-                num2 = rand.nextInt(20);
+            case "2":
+                bound = 20;
                 break;
-            case "Level 3 0-50":
-                num1 = rand.nextInt(50);
-                num2 = rand.nextInt(50);
+            case "3":
+                bound = 50;
                 break;
-            case "Level 4 0-100":
-                num1 = rand.nextInt(100);
-                num2 = rand.nextInt(100);
+            case "4":
+                bound = 100;
                 break;
-            case "Level 5 0-500":
-                num1 = rand.nextInt(500);
-                num2 = rand.nextInt(500);
+            case "5":
+                bound = 500;
                 break;
-            case "Level 6 0-1000":
-                num1 = rand.nextInt(1000);
-                num2 = rand.nextInt(1000);
+            case "6":
+                bound = 1000;
                 break;
             default:
                 break;
         }
-        firstnum.setText(Integer.toString(num1));
-        secondnum.setText(Integer.toString(num2));
+        num1 = rand.nextInt(bound);
+        int i = 0;
+        if (sign.equals("Division")){
+
+            do {
+                num2  = rand.nextInt(bound);
+//                i++;
+            }while( ( num1 <= num2  || num1 % num2 != 0 || num2 == 0) );
+
+//            if (num1 % num2 != 0 || num1 > num2 ){
+//                num2 = num1;
+//            }
+        }
+        firstnum.setText(""+num1);
+        secondnum.setText(""+num2);
         firstnum.setTextSize(70);
         secondnum.setTextSize(70);
     }
