@@ -57,11 +57,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 
         ArrayList<String> arrayList = new ArrayList<>();
-        int i=1;
         while (cursor.moveToNext()) {
             if ( cursor.getString(signIndex).equals(sign) && cursor.getString(levelIndex).equals(level) ) {
-                String person = i + ". " + cursor.getString(NameIndex) + " " + cursor.getString(ScoreIndex) ;
-                i++;
+                String person = cursor.getString(NameIndex) + "-" + cursor.getString(ScoreIndex) ;
                 arrayList.add(person);
             }
         }

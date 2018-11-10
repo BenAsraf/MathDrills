@@ -6,11 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ScoreBoard">
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+        <TextView
+            android:id="@+id/headeText"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Scoreboard"
+            android:paddingLeft="60dp"
+            android:textColor="@color/white"
+            android:background="@drawable/pick_banner"
+            android:textSize="50sp" />
 
-    </ListView>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tableLayout"
+            android:stretchColumns="0,1,2"
+            android:layout_margin="4dp"
+            android:gravity="center"
+            android:layout_below="@id/headeText"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/scoreboard"
+            android:text="back"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin = "4dp"/>
+
+        <Button
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_above="@+id/back"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/exit"
+            android:text="main menu"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin = "4dp"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

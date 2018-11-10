@@ -4,63 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignPick">
+    tools:context=".SignPick"
+    android:background="@drawable/numbers_bg">
 
     <TextView
+        android:id="@+id/pickasign"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:text="pick a sign"
         android:paddingLeft="60dp"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/white"
+        android:background="@drawable/pick_banner"
         android:textSize="50sp" />
 
     <Button
         android:id="@+id/plus"
-        android:layout_width="180dp"
-        android:layout_height="80dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="140dp"
-        android:text="Plus" />
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="7dp"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:text="Plus"/>
 
     <Button
         android:id="@+id/minus"
-        android:layout_width="180dp"
-        android:layout_height="80dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/plus"
-        android:text="Minus" />
+        android:layout_marginRight="7dp"
+        android:text="Minus"
+        android:background="@color/blue"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/multiply"
-        android:layout_width="180dp"
-        android:layout_height="80dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:text="Multiply" />
+        android:layout_marginLeft="7dp"
+        android:text="Multiply"
+        android:background="@color/blue"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/division"
-        android:layout_width="180dp"
-        android:layout_height="80dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:text="Division" />
+        android:layout_marginRight="7dp"
+        android:text="Division"
+        android:background="@color/blue"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/random"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/multiply"
-        android:text="random signs" />
+        android:text="random signs"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        />
     <Button
         android:id="@+id/back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/random"
-        android:text="Back" />
+        android:text="Back"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        />
 
 
 

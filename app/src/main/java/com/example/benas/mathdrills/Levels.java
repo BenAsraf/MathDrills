@@ -35,17 +35,18 @@ public class Levels extends Activity {
         lvl1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String level1 = lvl1.getText().toString();
                 if (mode.equals("play")) {
                     Intent intent = new Intent(Levels.this, GameActivity.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "1");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
                 else{
                     Intent intent = new Intent(Levels.this, ScoreBoard.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "1");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
             }
@@ -53,17 +54,18 @@ public class Levels extends Activity {
         lvl2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String level2 = lvl2.getText().toString();
                 if (mode.equals("play")) {
                     Intent intent = new Intent(Levels.this, GameActivity.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "2");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
                 else{
                     Intent intent = new Intent(Levels.this, ScoreBoard.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "2");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
             }
@@ -71,17 +73,18 @@ public class Levels extends Activity {
         lvl3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String level3 = lvl3.getText().toString();
                 if (mode.equals("play")) {
                     Intent intent = new Intent(Levels.this, GameActivity.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "3");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
                 else{
                     Intent intent = new Intent(Levels.this, ScoreBoard.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "3");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
             }
@@ -89,17 +92,18 @@ public class Levels extends Activity {
         lvl4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String level4 = lvl4.getText().toString();
                 if (mode.equals("play")) {
                     Intent intent = new Intent(Levels.this, GameActivity.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "4");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
                 else{
                     Intent intent = new Intent(Levels.this, ScoreBoard.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "4");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
             }
@@ -107,17 +111,18 @@ public class Levels extends Activity {
         lvl5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String level5 = lvl5.getText().toString();
                 if (mode.equals("play")) {
                     Intent intent = new Intent(Levels.this, GameActivity.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "5");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
                 else{
                     Intent intent = new Intent(Levels.this, ScoreBoard.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "5");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
             }
@@ -125,17 +130,18 @@ public class Levels extends Activity {
         lvl6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String level6 = lvl6.getText().toString();
                 if (mode.equals("play")) {
                     Intent intent = new Intent(Levels.this, GameActivity.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "6");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
                 else{
                     Intent intent = new Intent(Levels.this, ScoreBoard.class);
                     intent.putExtra("sign", sign);
                     intent.putExtra("level", "6");
+                    intent.putExtra("mode",mode);
                     startActivity(intent);
                 }
             }
@@ -143,7 +149,9 @@ public class Levels extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Levels.this,MainActivity.class);
+                Intent intent = new Intent(Levels.this,SignPick.class);
+                intent.putExtra("sign",sign);
+                intent.putExtra("mode",mode);
                 startActivity(intent);
             }
         });

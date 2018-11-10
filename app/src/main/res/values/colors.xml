@@ -15,8 +15,9 @@
     <color name="bgcolor">#5c83f7</color>
     <color name="white">#ffffff</color>
     <color name="blue">#0b48ff</color>
-    <color name="red">#9d4343</color>
+    <color name="brown">#9d4343</color>
     <color name="orange">#ec7f26</color>
     <color name="orange2">#facfac</color>
     <color name="gray">#5d5d5d</color>
+    <color name="red">#ff0000</color>
 </resources>

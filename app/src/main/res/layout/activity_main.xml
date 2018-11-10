@@ -4,29 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/numbers_bg">
 
+    <ImageView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/header"
+        android:layout_margin="10dp"/>
 
     <Button
         android:id="@+id/play"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/play"
+        android:gravity="center"
         android:text="play"
-        />
+        android:textStyle="bold"
+        android:layout_margin="7dp"/>
+
     <Button
         android:id="@+id/scoreboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/play"
+        android:layout_centerHorizontal="true"
         android:text="Scoreboard"
-        android:layout_below="@+id/play"/>
+        android:background="@drawable/scoreboard"
+        android:textStyle="bold"
+        android:layout_margin="7dp"/>
+
     <Button
         android:id="@+id/exit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/scoreboard"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/exit"
         android:text="exit"
-        android:layout_below="@+id/scoreboard"/>
+        android:textStyle="bold"
+        android:layout_margin="7dp"/>
 </RelativeLayout>

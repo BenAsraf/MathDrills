@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameActivity extends Activity {
@@ -47,8 +50,12 @@ public class GameActivity extends Activity {
     TextView correctanswer;
     String level;
     String sign;
+    String mode;
     int numcorrectanswer=0;
     DatabaseHelper database;
+    ArrayList<Integer> list;
+    String randomStr;
+    String[] array;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +63,7 @@ public class GameActivity extends Activity {
         database = new DatabaseHelper(GameActivity.this);
         sign = getIntent().getStringExtra("sign");
         level = getIntent().getStringExtra("level");
+        mode = getIntent().getStringExtra("mode");
         btnZero = findViewById(R.id.btn_0);
         btnOne = findViewById(R.id.btn_1);
         btnTwo = findViewById(R.id.btn_2);
@@ -78,10 +86,11 @@ public class GameActivity extends Activity {
         correct = findViewById(R.id.correct);
         wrong = findViewById(R.id.wrong);
         timer = findViewById(R.id.timer);
+        list = new ArrayList<Integer>();
         correctanswer = findViewById(R.id.correctanswer);
         correctanswer.setText(Integer.toString(numcorrectanswer));
-        String[] array = getResources().getStringArray(R.array.signsarray);
-        String randomStr = array[new Random().nextInt(array.length)];
+        array = getResources().getStringArray(R.array.signsarray);
+        randomStr = array[new Random().nextInt(array.length)];
         signtv.setTextSize(70);
         switch (sign) {
             case "Plus":
@@ -131,9 +140,11 @@ public class GameActivity extends Activity {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signcheck = signtv.getText().toString();
-                checkdrill(signcheck);
+                if (answer.length() > 0) {
+                    signcheck = signtv.getText().toString();
+                    checkdrill(signcheck);
                 }
+            }
         });
         nextdrill.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +154,10 @@ public class GameActivity extends Activity {
                 wrong.setVisibility(View.GONE);
                 nextdrill.setVisibility(View.GONE);
                 answer.getText().clear();
+                if (sign.equals("random signs")) {
+                    randomStr = array[new Random().nextInt(array.length)];
+                    signtv.setText(randomStr);
+                }
             }
         });
         exit.setOnClickListener(new View.OnClickListener() {
@@ -154,7 +169,7 @@ public class GameActivity extends Activity {
             }
         });
 
-        new CountDownTimer(10000, 1000) {
+        new CountDownTimer(30000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer.setText(""+millisUntilFinished / 1000);
@@ -190,7 +205,11 @@ public class GameActivity extends Activity {
                             if(!username.getText().toString().equals(""))
                                 name = username.getText().toString();
                             database.add(name,Integer.toString(numcorrectanswer),sign,level);
-                            Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                            Intent intent = new Intent(GameActivity.this,ScoreBoard.class);
+                            intent.putExtra("sign", sign);
+                            intent.putExtra("level", level);
+                            mode = "scoreboard";
+                            intent.putExtra("mode",mode);
                             startActivity(intent);
                         }
                     });
@@ -286,20 +305,27 @@ public class GameActivity extends Activity {
             default:
                 break;
         }
-        num1 = rand.nextInt(bound);
+        num2 = rand.nextInt(bound-1)+1;
         if (sign.equals("Division")){
-
-            do {
-                num2  = rand.nextInt(bound);
-
-            }while( ( num1 <= num2  || num1 % num2 != 0 || num2 == 0) );
-
-
+                for (int i = num2; i <= bound; i++) {
+                    if (i % num2 == 0)
+                        list.add(i);
+                }
+                if (list.isEmpty()) {
+                    num1 = num2;
+                } else {
+                    num1 = list.get(rand.nextInt(list.size()));
+                    list.clear();
+                }
         }
+        else
+            num1 = rand.nextInt(bound);
+
         firstnum.setText(""+num1);
         secondnum.setText(""+num2);
         firstnum.setTextSize(70);
         secondnum.setTextSize(70);
     }
+
 
 }
