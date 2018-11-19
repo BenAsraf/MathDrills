@@ -12,7 +12,7 @@
         android:id="@+id/msg1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="congratulations"
+        android:text="@string/congratulations"
         android:textSize="35sp"
         android:textColor="@color/white"/>
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/msg1"
         android:textSize="20sp"
-        android:text=" You answerd correctly on"
+        android:text="@string/you_answerd"
         android:layout_marginStart="10dp"
         android:textColor="@color/white"/>
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/msg2"
         android:layout_below="@id/msg1"
-        android:text=" drills "
+        android:text="@string/drills"
         android:textSize="20sp"
         android:textColor="@color/white"/>
 
@@ -42,7 +42,7 @@
         android:layout_below="@id/msg1"
         android:layout_toEndOf="@id/correctanswers"
         android:textSize="20sp"
-        android:text="drills"
+        android:text="@string/drills"
         android:id="@+id/msg3"
         android:textColor="@color/white"/>
 
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Enter your name"
+        android:text="@string/your_name"
         android:layout_below="@id/msg2"
         android:layout_marginStart="10dp"
         android:textColor="@color/white"/>

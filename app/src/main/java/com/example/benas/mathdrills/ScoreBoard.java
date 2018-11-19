@@ -37,9 +37,9 @@ public class ScoreBoard extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_board);
-        sign = getIntent().getStringExtra("sign");
-        level = getIntent().getStringExtra("level");
-        mode = getIntent().getStringExtra("mode");
+        sign = getIntent().getStringExtra(GameActivity.SIGN);
+        level = getIntent().getStringExtra(GameActivity.LEVEL);
+        mode = getIntent().getStringExtra(GameActivity.MODE);
         back = findViewById(R.id.back);
         main = findViewById(R.id.main);
         database = new DatabaseHelper(ScoreBoard.this);
@@ -50,12 +50,13 @@ public class ScoreBoard extends Activity {
         }
         else
             ReadScore(ScoreBoard.this,arrayList);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScoreBoard.this, Levels.class);
-                intent.putExtra("sign", sign);
-                intent.putExtra("mode",mode);
+                intent.putExtra(GameActivity.SIGN, sign);
+                intent.putExtra(GameActivity.MODE,mode);
                 startActivity(intent);
             }
         });
@@ -93,7 +94,7 @@ public class ScoreBoard extends Activity {
         TextView textView = new TextView(context);
         TableLayout.LayoutParams layoutParams = new TableLayout.LayoutParams();
         layoutParams.setMargins(0, 20, 0, 0);
-        textView.setText("level " + level);
+        textView.setText(level);
         tableRow.setBackground(levelHeader);
         tableRow.addView(textView);
         tableRow.setGravity(Gravity.CENTER);

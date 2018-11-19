@@ -27,7 +27,7 @@
         android:layout_marginLeft="7dp"
         android:background="@color/blue"
         android:textColor="@color/white"
-        android:text="Plus"/>
+        android:text="@string/addition"/>
 
     <Button
         android:id="@+id/minus"
@@ -36,7 +36,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/plus"
         android:layout_marginRight="7dp"
-        android:text="Minus"
+        android:text="@string/subtraction"
         android:background="@color/blue"
         android:textColor="@color/white"/>
 
@@ -47,7 +47,7 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="7dp"
-        android:text="Multiply"
+        android:text="@string/multiplication"
         android:background="@color/blue"
         android:textColor="@color/white"/>
 
@@ -58,7 +58,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="7dp"
-        android:text="Division"
+        android:text="@string/division"
         android:background="@color/blue"
         android:textColor="@color/white"/>
 
@@ -68,7 +68,7 @@
         android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/multiply"
-        android:text="random signs"
+        android:text="@string/random_signs"
         android:background="@color/blue"
         android:textColor="@color/white"
         android:layout_margin="10dp"
@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/random"
-        android:text="Back"
+        android:text="@string/back"
         android:background="@color/blue"
         android:textColor="@color/white"
         android:layout_margin="10dp"

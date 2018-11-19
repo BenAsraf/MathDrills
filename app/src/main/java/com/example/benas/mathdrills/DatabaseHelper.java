@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import static java.sql.Types.REAL;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
@@ -27,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, score TEXT, sign TEXT,level TEXT);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, score TEXT , sign TEXT,level TEXT);");
     }
 
     @Override
@@ -36,24 +38,21 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public void add(String name, String score,String sign,String level) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("score", score);
-        contentValues.put("sign",sign);
-        contentValues.put("level",level);
+        contentValues.put(NAME, name);
+        contentValues.put(SCORE, score);
+        contentValues.put(SIGN,sign);
+        contentValues.put(LEVEL,level);
         getWritableDatabase().insert(TABLE_NAME, null, contentValues);
     }
 
-    public Cursor getAll() {
-        return (getReadableDatabase().rawQuery("SELECT name,score  FROM score_board", null));
-    }
 
     public ArrayList<String> read(String sign, String level){
-        Cursor cursor = getReadableDatabase().query(TABLE_NAME,null,null ,null,null,null,"score" + " DESC limit 5" );
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT  * FROM " + TABLE_NAME +" ORDER BY CAST(score AS REAL) DESC " ,null);
 
-        int NameIndex = cursor.getColumnIndex("name");
-        int ScoreIndex = cursor.getColumnIndex("score");
-        int signIndex = cursor.getColumnIndex("sign");
-        int levelIndex = cursor.getColumnIndex("level");
+        int NameIndex = cursor.getColumnIndex(NAME);
+        int ScoreIndex = cursor.getColumnIndex(SCORE);
+        int signIndex = cursor.getColumnIndex(SIGN);
+        int levelIndex = cursor.getColumnIndex(LEVEL);
 
 
         ArrayList<String> arrayList = new ArrayList<>();

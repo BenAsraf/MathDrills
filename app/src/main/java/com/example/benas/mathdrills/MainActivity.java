@@ -26,9 +26,9 @@ public class MainActivity extends Activity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mode ="play";
+                mode =GameActivity.PLAY;
                 Intent intent = new Intent(MainActivity.this, SignPick.class);
-                intent.putExtra("mode",mode);
+                intent.putExtra(GameActivity.MODE,mode);
                 startActivity(intent);
             }
         });
@@ -44,9 +44,9 @@ public class MainActivity extends Activity {
         scoreboardBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mode = "scoreboard";
+                mode = GameActivity.SCOREBOARD;
                 Intent intent = new Intent(MainActivity.this, SignPick.class);
-                intent.putExtra("mode",mode);
+                intent.putExtra(GameActivity.MODE,mode);
                 startActivity(intent);
 
             }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MathDrills</string>
+    <string name="play">שחק</string>
+    <string name="scoreboard">לוח תוצאות</string>
+    <string name="exit">יציאה</string>
+    <string name="addition">חיבור</string>
+    <string name="subtraction">חיסור</string>
+    <string name="multiplication">כפל</string>
+    <string name="division">חילוק</string>
+    <string name="random_signs">"סימנים רנדומליים "</string>
+    <string name="back">חזרה</string>
+    <string name="level_1">שלב 1  0-10</string>
+    <string name="level_2">שלב 2  0-20</string>
+    <string name="level_3">שלב 3  0-50</string>
+    <string name="level_4">שלב 4  0-100</string>
+    <string name="level_5">שלב 5  0-500</string>
+    <string name="level_6">שלב 6  0-1000</string>
+    <string name="delete">מחק</string>
+    <string name="enter">אישור</string>
+    <string name="main">תפריט</string>
+    <string name="save">שמור תוצאה</string>
+    <string name="congratulations">כל הכבוד</string>
+    <string name="you_answerd">"ענית נכון על "</string>
+    <string name="drills">"תרגילים "</string>
+    <string name="your_name">הכנס את שמך</string>
+</resources>

@@ -7,4 +7,27 @@
         <item>x</item>
         <item>/</item>
     </string-array>
+    <string name="play">play</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="exit">EXIT</string>
+    <string name="addition">Addition</string>
+    <string name="subtraction">Subtraction</string>
+    <string name="multiplication">Multiplication</string>
+    <string name="division">Divsion</string>
+    <string name="random_signs">Random signs</string>
+    <string name="back">Back</string>
+    <string name="level_1">Level 1  0-10</string>
+    <string name="level_2">Level 2 0-20</string>
+    <string name="level_3">Level 3  0-50</string>
+    <string name="level_4">Level 4  0-100</string>
+    <string name="level_5">Level 5  0-500</string>
+    <string name="level_6">Level 6  0-1000</string>
+    <string name="delete">Delete</string>
+    <string name="enter">Enter</string>
+    <string name="main">Main menu</string>
+    <string name="save">Save score</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="you_answerd">"you answerd correctly on "</string>
+    <string name="drills">"drills "</string>
+    <string name="your_name">Enter your name</string>
 </resources>

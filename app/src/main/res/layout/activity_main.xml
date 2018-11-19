@@ -21,7 +21,7 @@
         android:layout_centerInParent="true"
         android:background="@drawable/play"
         android:gravity="center"
-        android:text="play"
+        android:text="@string/play"
         android:textStyle="bold"
         android:layout_margin="7dp"/>
 
@@ -31,7 +31,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/play"
         android:layout_centerHorizontal="true"
-        android:text="Scoreboard"
+        android:text="@string/scoreboard"
         android:background="@drawable/scoreboard"
         android:textStyle="bold"
         android:layout_margin="7dp"/>
@@ -43,7 +43,7 @@
         android:layout_below="@+id/scoreboard"
         android:layout_centerHorizontal="true"
         android:background="@drawable/exit"
-        android:text="exit"
+        android:text="@string/exit"
         android:textStyle="bold"
         android:layout_margin="7dp"/>
 </RelativeLayout>

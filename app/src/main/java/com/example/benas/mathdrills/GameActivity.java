@@ -2,7 +2,6 @@ package com.example.benas.mathdrills;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,10 +15,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class GameActivity extends Activity {
+
+    public static final String MODE = "mode";
+    public static final String SIGN = "sign";
+    public static final String LEVEL = "level";
+    public static final String PLAY = "play";
+    public static final String SCOREBOARD = "scoreboard";
+    public static final String PLUS_SIGN = "+";
+    public static final String MINUS_SIGN = "-";
+    public static final String MULTUPLY_SIGN = "*";
+    public static final String DIVISION_SIGN = "/";
+    public static final String RANDOM_SIGN = "rand";
+    public static final String LEVEL_1 = "lvl 1";
+    public static final String LEVEL_2 = "lvl 2";
+    public static final String LEVEL_3 = "lvl 3";
+    public static final String LEVEL_4 = "lvl 4";
+    public static final String LEVEL_5 = "lvl 5";
+    public static final String LEVEL_6 = "lvl 6";
+
+
 
     Button btnZero;
     Button btnOne;
@@ -30,40 +47,40 @@ public class GameActivity extends Activity {
     Button btnSix;
     Button btnSeven;
     Button btnEight;
-    Button btnnine;
+    Button btnNine;
     Button enter;
     Button delete;
-    Button nextdrill;
     Button exit;
     Button btnnegative;
-    TextView firstnum;
-    TextView secondnum;
+    TextView first_num;
+    TextView second_num;
     TextView signtv;
     EditText answer;
-    int num1;
-    int num2;
-    boolean actionpressed;
-    ImageView correct;
+    Integer num1;
+    Integer num2;
+    boolean action_pressed;
     ImageView wrong;
     String signcheck;
     TextView timer;
-    TextView correctanswer;
+    TextView correct_answer;
     String level;
     String sign;
     String mode;
-    int numcorrectanswer=0;
+    int num_correct_answer =0;
     DatabaseHelper database;
     ArrayList<Integer> list;
     String randomStr;
     String[] array;
+    Intent intent;
+    boolean chk_answer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         database = new DatabaseHelper(GameActivity.this);
-        sign = getIntent().getStringExtra("sign");
-        level = getIntent().getStringExtra("level");
-        mode = getIntent().getStringExtra("mode");
+        sign = getIntent().getStringExtra(SIGN);
+        level = getIntent().getStringExtra(LEVEL);
+        mode = getIntent().getStringExtra(MODE);
         btnZero = findViewById(R.id.btn_0);
         btnOne = findViewById(R.id.btn_1);
         btnTwo = findViewById(R.id.btn_2);
@@ -73,44 +90,31 @@ public class GameActivity extends Activity {
         btnSix = findViewById(R.id.btn_6);
         btnSeven = findViewById(R.id.btn_7);
         btnEight = findViewById(R.id.btn_8);
-        btnnine = findViewById(R.id.btn_9);
+        btnNine = findViewById(R.id.btn_9);
         btnnegative = findViewById(R.id.btn_negative);
         enter = findViewById(R.id.enter);
         delete = findViewById(R.id.delete);
-        nextdrill = findViewById(R.id.nextdrill);
         exit = findViewById(R.id.exit);
-        firstnum = findViewById(R.id.firstnum);
-        secondnum = findViewById(R.id.secondnum);
+        first_num = findViewById(R.id.firstnum);
+        second_num = findViewById(R.id.secondnum);
         signtv = findViewById(R.id.sign);
         answer = findViewById(R.id.answer);
-        correct = findViewById(R.id.correct);
         wrong = findViewById(R.id.wrong);
         timer = findViewById(R.id.timer);
         list = new ArrayList<Integer>();
-        correctanswer = findViewById(R.id.correctanswer);
-        correctanswer.setText(Integer.toString(numcorrectanswer));
+        correct_answer = findViewById(R.id.correctanswer);
+        correct_answer.setText(Integer.toString(num_correct_answer));
         array = getResources().getStringArray(R.array.signsarray);
         randomStr = array[new Random().nextInt(array.length)];
+        chk_answer = false;
         signtv.setTextSize(70);
-        switch (sign) {
-            case "Plus":
-                signtv.setText("+");
-                break;
-            case "Minus":
-                signtv.setText("-");
-                break;
-            case "Multiply":
-                signtv.setText("x");
-                break;
-            case "Division":
-                signtv.setText("/");
-                break;
-            case "random signs":
-                signtv.setText(randomStr);
-                break;
-            default:
-                break;
+
+        if (sign == RANDOM_SIGN){
+            signtv.setText(randomStr);
         }
+        else
+            signtv.setText(sign);
+
         randnumbers();
 
         final numberbtnslistner numberbtnslistner = new numberbtnslistner();
@@ -123,7 +127,7 @@ public class GameActivity extends Activity {
         btnSix.setOnClickListener(numberbtnslistner);
         btnSeven.setOnClickListener(numberbtnslistner);
         btnEight.setOnClickListener(numberbtnslistner);
-        btnnine.setOnClickListener(numberbtnslistner);
+        btnNine.setOnClickListener(numberbtnslistner);
         btnZero.setOnClickListener(numberbtnslistner);
         btnnegative.setOnClickListener(numberbtnslistner);
 
@@ -146,20 +150,6 @@ public class GameActivity extends Activity {
                 }
             }
         });
-        nextdrill.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                randnumbers();
-                correct.setVisibility(View.GONE);
-                wrong.setVisibility(View.GONE);
-                nextdrill.setVisibility(View.GONE);
-                answer.getText().clear();
-                if (sign.equals("random signs")) {
-                    randomStr = array[new Random().nextInt(array.length)];
-                    signtv.setText(randomStr);
-                }
-            }
-        });
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,7 +160,6 @@ public class GameActivity extends Activity {
         });
 
         new CountDownTimer(30000, 1000) {
-
             public void onTick(long millisUntilFinished) {
                 timer.setText(""+millisUntilFinished / 1000);
                 timer.setTextSize(25);
@@ -178,12 +167,13 @@ public class GameActivity extends Activity {
             }
 
             public void onFinish() {
+                intent = new Intent(GameActivity.this,MainActivity.class);
                 LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View view = inflater.inflate(R.layout.dialog_endgame,null,false);
                 final TextView correctanswers = view.findViewById(R.id.correctanswers);
                 TextView usernameTV = view.findViewById(R.id.msg4);
                 final EditText username = view.findViewById(R.id.username);
-                correctanswers.setText(" "+numcorrectanswer+" ");
+                correctanswers.setText(" "+ num_correct_answer +" ");
                 AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this,R.style.DialogTheme);
                 builder.setView(view);
                 username.setVisibility(View.GONE);
@@ -192,7 +182,6 @@ public class GameActivity extends Activity {
                         .setNeutralButton("Main menu", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(GameActivity.this,MainActivity.class);
                                 startActivity(intent);
                             }
                         });
@@ -204,12 +193,7 @@ public class GameActivity extends Activity {
                             String name = "user1";
                             if(!username.getText().toString().equals(""))
                                 name = username.getText().toString();
-                            database.add(name,Integer.toString(numcorrectanswer),sign,level);
-                            Intent intent = new Intent(GameActivity.this,ScoreBoard.class);
-                            intent.putExtra("sign", sign);
-                            intent.putExtra("level", level);
-                            mode = "scoreboard";
-                            intent.putExtra("mode",mode);
+                            database.add(name,Integer.toString(num_correct_answer),sign,level);
                             startActivity(intent);
                         }
                     });
@@ -222,91 +206,85 @@ public class GameActivity extends Activity {
         @Override
         public void onClick(View view) {
             String numStr = ((Button) view).getText().toString();
-            if (actionpressed) {
+            if (action_pressed) {
                 answer.setText(numStr);
-                actionpressed = false;
+                action_pressed = false;
             } else
                 answer.setText(answer.getText() + numStr);
         }
     }
     public void checkdrill (String sign){
+        chk_answer = false;
         switch (sign) {
             case "+":
                 if (num1 + num2 == Integer.parseInt(answer.getText().toString())) {
-                    correct.setVisibility(View.VISIBLE);
-                    wrong.setVisibility(View.GONE);
-                    numcorrectanswer++;
-                    correctanswer.setText(Integer.toString(numcorrectanswer));
-                    nextdrill.setVisibility(View.VISIBLE);
+                    chk_answer = true;
                 } else {
                     wrong.setVisibility(View.VISIBLE);
-                    correct.setVisibility(View.GONE);
                 }
                 break;
             case "-":
                 if (num1 - num2 == Integer.parseInt(answer.getText().toString())) {
-                    correct.setVisibility(View.VISIBLE);
-                    wrong.setVisibility(View.GONE);
-                    numcorrectanswer++;
-                    correctanswer.setText(Integer.toString(numcorrectanswer));
-                    nextdrill.setVisibility(View.VISIBLE);
+                    chk_answer = true;
                 } else {
                     wrong.setVisibility(View.VISIBLE);
-                    correct.setVisibility(View.GONE);
                 }
                 break;
             case "x":
                 if (num1 * num2 == Integer.parseInt(answer.getText().toString())) {
-                    correct.setVisibility(View.VISIBLE);
-                    wrong.setVisibility(View.GONE);
-                    numcorrectanswer++;
-                    correctanswer.setText(Integer.toString(numcorrectanswer));
-                    nextdrill.setVisibility(View.VISIBLE);
+                    chk_answer = true;
                 } else {
                     wrong.setVisibility(View.VISIBLE);
-                    correct.setVisibility(View.GONE);
                 }
                 break;
             case "/":
                 if (num1 / num2 == Integer.parseInt(answer.getText().toString())) {
-                    correct.setVisibility(View.VISIBLE);
-                    wrong.setVisibility(View.GONE);
-                    numcorrectanswer++;
-                    correctanswer.setText(Integer.toString(numcorrectanswer));
-                    nextdrill.setVisibility(View.VISIBLE);
+                    chk_answer = true;
                 }
             default:
                 break;
         }
+        if (chk_answer) {
+            num_correct_answer++;
+            correct_answer.setText(Integer.toString(num_correct_answer));
+            randnumbers();
+            wrong.setVisibility(View.GONE);
+            answer.getText().clear();
+            if (sign.equals(RANDOM_SIGN)) {
+                randomStr = array[new Random().nextInt(array.length)];
+                signtv.setText(randomStr);
+            }
+        }
+
 
     }
     public void randnumbers (){
         Random rand = new Random();
         int bound = 0;
         switch (level) {
-            case "1":
+            case LEVEL_1:
                bound = 10;
                 break;
-            case "2":
+            case LEVEL_2:
                 bound = 20;
                 break;
-            case "3":
+            case LEVEL_3:
                 bound = 50;
                 break;
-            case "4":
+            case LEVEL_4:
                 bound = 100;
                 break;
-            case "5":
+            case LEVEL_5:
                 bound = 500;
                 break;
-            case "6":
+            case LEVEL_6:
                 bound = 1000;
                 break;
             default:
                 break;
         }
         num2 = rand.nextInt(bound-1)+1;
-        if (sign.equals("Division")){
+        if (sign.equals(DIVISION_SIGN)){
                 for (int i = num2; i <= bound; i++) {
                     if (i % num2 == 0)
                         list.add(i);
@@ -321,10 +299,10 @@ public class GameActivity extends Activity {
         else
             num1 = rand.nextInt(bound);
 
-        firstnum.setText(""+num1);
-        secondnum.setText(""+num2);
-        firstnum.setTextSize(70);
-        secondnum.setTextSize(70);
+        first_num.setText(num1.toString());
+        second_num.setText(num2.toString());
+        first_num.setTextSize(70);
+        second_num.setTextSize(70);
     }
 
 

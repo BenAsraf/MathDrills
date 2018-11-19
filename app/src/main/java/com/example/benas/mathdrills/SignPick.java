@@ -14,73 +14,67 @@ public class SignPick extends Activity {
     Button division;
     Button random;
     Button back;
+    Intent intent;
+    String mode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_pick);
-        final String mode = getIntent().getStringExtra("mode");
+        mode = getIntent().getStringExtra(GameActivity.MODE);
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
         multiply = findViewById(R.id.multiply);
         division = findViewById(R.id.division);
         random = findViewById(R.id.random);
         back = findViewById(R.id.back);
+        intent = new Intent(SignPick.this,Levels.class);
+        intent.putExtra(GameActivity.MODE, mode);
 
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String plussign = plus.getText().toString();
-                Intent intent = new Intent(SignPick.this,Levels.class);
-                intent.putExtra("sign",plussign);
-                intent.putExtra("mode",mode);
+                intent.putExtra(GameActivity.SIGN,GameActivity.PLUS_SIGN);
                 startActivity(intent);
             }
         });
+
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String minussign = minus.getText().toString();
-                Intent intent = new Intent(SignPick.this,Levels.class);
-                intent.putExtra("sign",minussign);
-                intent.putExtra("mode",mode);
+                intent.putExtra(GameActivity.SIGN,GameActivity.MINUS_SIGN);
                 startActivity(intent);
             }
         });
+
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String multiplysign = multiply.getText().toString();
-                Intent intent = new Intent(SignPick.this,Levels.class);
-                intent.putExtra("sign",multiplysign);
-                intent.putExtra("mode",mode);
+                intent.putExtra(GameActivity.SIGN,GameActivity.MULTUPLY_SIGN);
                 startActivity(intent);
             }
         });
+
         division.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String divisionsign = division.getText().toString();
-                Intent intent = new Intent(SignPick.this,Levels.class);
-                intent.putExtra("sign",divisionsign);
-                intent.putExtra("mode",mode);
+                intent.putExtra(GameActivity.SIGN,GameActivity.DIVISION_SIGN);
                 startActivity(intent);
             }
         });
+
         random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String randomsign = random.getText().toString();
-                Intent intent = new Intent(SignPick.this,Levels.class);
-                intent.putExtra("sign",randomsign);
-                intent.putExtra("mode",mode);
+                intent.putExtra(GameActivity.SIGN,GameActivity.RANDOM_SIGN);
                 startActivity(intent);
             }
         });
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignPick.this,MainActivity.class);
-                startActivity(intent);
+                Intent intent_exit = new Intent(SignPick.this,MainActivity.class);
+                startActivity(intent_exit);
             }
         });
 

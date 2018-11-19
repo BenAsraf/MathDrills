@@ -101,7 +101,7 @@
             android:id="@+id/delete"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:text="delete"
+            android:text="@string/delete"
             android:textSize="20dp"
             android:layout_margin="5dp"
             android:textStyle="bold"
@@ -213,30 +213,12 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/nextdrill"
-        android:layout_width="180dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:text="Next drill"
-        android:visibility="gone"/>
-
-    <Button
         android:id="@+id/exit"
-        android:layout_width="180dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:text="Main menu" />
-
-    <ImageView
-        android:id="@+id/correct"
-        android:layout_width="73dp"
-        android:layout_height="80dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/drill"
-        android:src="@drawable/ic_correct"
-        android:visibility="gone" />
+        android:text="@string/main" />
 
     <ImageView
         android:id="@+id/wrong"
@@ -254,7 +236,7 @@
         android:layout_below="@+id/thirdrow"
         android:layout_centerHorizontal="true"
         android:background="#00ff15"
-        android:text="Enter"
+        android:text="@string/enter"
         android:textColor="#fff"
         android:textSize="20dp"
         android:textStyle="bold" />
